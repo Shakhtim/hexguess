@@ -32,138 +32,104 @@
 
     <!-- Rules Screen -->
     <div class="rules-screen pixel-border" v-if="gameState === 'menu' && menuScreen === 'rules'">
-      <h2 class="screen-title">ПРАВИЛА ИГРЫ</h2>
+      <h2 class="screen-title">{{ t('rulesTitle', currentLanguage) }}</h2>
 
       <div class="rules-content">
         <div class="rule-section">
-          <h3>🎯 КАК ИГРАТЬ</h3>
-          <p>Тебе показывается цвет. Используй RGB-слайдеры или палитру, чтобы воссоздать его. Нажми "ОТПРАВИТЬ" когда готов!</p>
+          <h3>{{ t('howToPlay', currentLanguage) }}</h3>
+          <p>{{ t('howToPlayText', currentLanguage) }}</p>
         </div>
 
         <div class="rule-section">
-          <h3>📐 КАК СЧИТАЕТСЯ ТОЧНОСТЬ</h3>
-          <p>Игра использует евклидово расстояние в RGB пространстве:</p>
+          <h3>{{ t('accuracyCalc', currentLanguage) }}</h3>
+          <p>{{ t('accuracyText', currentLanguage) }}</p>
           <p class="formula">d = √((r₂-r₁)² + (g₂-g₁)² + (b₂-b₁)²)</p>
-          <p>Точность = 100 - (дистанция / 441.67 × 100)</p>
+          <p>{{ t('accuracyFormula', currentLanguage) }}</p>
         </div>
 
         <div class="rule-section">
-          <h3>🎮 РЕЖИМЫ ИГРЫ</h3>
+          <h3>{{ t('gameModes', currentLanguage) }}</h3>
 
           <div class="mode-detail">
-            <strong class="mode-detail-name">ЛЕГКО</strong>
-            <p>Упрощенный режим для новичков. Игра сравнивает только оттенок (Hue) цвета, игнорируя насыщенность и яркость. Идеально для знакомства с цветовым кругом!</p>
-            <p class="mode-meta">5 раундов • Базовые очки</p>
+            <strong class="mode-detail-name">{{ t('modeDetails.easy.name', currentLanguage) }}</strong>
+            <p>{{ t('modeDetails.easy.desc', currentLanguage) }}</p>
+            <p class="mode-meta">{{ t('modeDetails.easy.meta', currentLanguage) }}</p>
           </div>
 
           <div class="mode-detail">
-            <strong class="mode-detail-name">НОРМАЛЬНО</strong>
-            <p>Стандартная игра на 5 раундов. Нужно угадать все три компонента RGB цвета. Случайные цвета с полным спектром сложности.</p>
-            <p class="mode-meta">5 раундов • Стандартные очки</p>
+            <strong class="mode-detail-name">{{ t('modeDetails.normal.name', currentLanguage) }}</strong>
+            <p>{{ t('modeDetails.normal.desc', currentLanguage) }}</p>
+            <p class="mode-meta">{{ t('modeDetails.normal.meta', currentLanguage) }}</p>
           </div>
 
           <div class="mode-detail">
-            <strong class="mode-detail-name">СЛОЖНО</strong>
-            <p>Экстремальная сложность! Генерируются похожие цвета с небольшими вариациями. Требуется безупречное цветовосприятие.</p>
-            <p class="mode-meta">5 раундов • Очки ×1.5 бонус</p>
+            <strong class="mode-detail-name">{{ t('modeDetails.hard.name', currentLanguage) }}</strong>
+            <p>{{ t('modeDetails.hard.desc', currentLanguage) }}</p>
+            <p class="mode-meta">{{ t('modeDetails.hard.meta', currentLanguage) }}</p>
           </div>
 
           <div class="mode-detail">
-            <strong class="mode-detail-name">ДЕЙЛИ</strong>
-            <p>Один цвет в день для всех игроков! Цвет генерируется на основе текущей даты. Сравни свои результаты с друзьями!</p>
-            <p class="mode-meta">5 раундов • Очки ×1.3 бонус</p>
+            <strong class="mode-detail-name">{{ t('modeDetails.daily.name', currentLanguage) }}</strong>
+            <p>{{ t('modeDetails.daily.desc', currentLanguage) }}</p>
+            <p class="mode-meta">{{ t('modeDetails.daily.meta', currentLanguage) }}</p>
           </div>
 
           <div class="mode-detail">
-            <strong class="mode-detail-name">БЛИЦ</strong>
-            <p>Гонка на время! У тебя 60 секунд. Каждое правильное угадывание добавляет бонусное время (до 5 секунд за идеальное попадание). Сколько успеешь?</p>
-            <p class="mode-meta">60 секунд • Бесконечные раунды</p>
+            <strong class="mode-detail-name">{{ t('modeDetails.blitz.name', currentLanguage) }}</strong>
+            <p>{{ t('modeDetails.blitz.desc', currentLanguage) }}</p>
+            <p class="mode-meta">{{ t('modeDetails.blitz.meta', currentLanguage) }}</p>
           </div>
 
           <div class="mode-detail">
-            <strong class="mode-detail-name">ГРАДИЕНТ</strong>
-            <p>Показываются два цвета. Твоя задача — найти точный средний цвет между ними. Цвета усредняются по каждому RGB каналу.</p>
-            <p class="mode-meta">5 раундов • Стандартные очки</p>
+            <strong class="mode-detail-name">{{ t('modeDetails.gradient.name', currentLanguage) }}</strong>
+            <p>{{ t('modeDetails.gradient.desc', currentLanguage) }}</p>
+            <p class="mode-meta">{{ t('modeDetails.gradient.meta', currentLanguage) }}</p>
           </div>
 
           <div class="mode-detail">
-            <strong class="mode-detail-name">СЛЕПАЯ ЗОНА</strong>
-            <p>Один из RGB каналов скрыт! Два канала показываются, а третий нужно угадать самостоятельно. Случайный выбор скрытого канала в каждом раунде.</p>
-            <p class="mode-meta">5 раундов • Стандартные очки</p>
+            <strong class="mode-detail-name">{{ t('modeDetails.blind.name', currentLanguage) }}</strong>
+            <p>{{ t('modeDetails.blind.desc', currentLanguage) }}</p>
+            <p class="mode-meta">{{ t('modeDetails.blind.meta', currentLanguage) }}</p>
           </div>
 
           <div class="mode-detail">
-            <strong class="mode-detail-name">ИЛЛЮЗИЯ</strong>
-            <p>Цвет показывается на цветном фоне. Оптические иллюзии искажают восприятие! Сможешь угадать реальный цвет, игнорируя влияние фона?</p>
-            <p class="mode-meta">5 раундов • Стандартные очки</p>
+            <strong class="mode-detail-name">{{ t('modeDetails.illusion.name', currentLanguage) }}</strong>
+            <p>{{ t('modeDetails.illusion.desc', currentLanguage) }}</p>
+            <p class="mode-meta">{{ t('modeDetails.illusion.meta', currentLanguage) }}</p>
           </div>
 
           <div class="mode-detail">
-            <strong class="mode-detail-name">ГЛАЗ РЫСИ</strong>
-            <p>У тебя 3 попытки на каждый цвет. После каждой неудачной попытки получаешь подсказку (слишком темно, нужно больше зеленого и т.д.). При провале — только 30% очков.</p>
-            <p class="mode-meta">5 раундов • 3 попытки на раунд</p>
+            <strong class="mode-detail-name">{{ t('modeDetails.lynx.name', currentLanguage) }}</strong>
+            <p>{{ t('modeDetails.lynx.desc', currentLanguage) }}</p>
+            <p class="mode-meta">{{ t('modeDetails.lynx.meta', currentLanguage) }}</p>
           </div>
 
           <div class="mode-detail">
-            <strong class="mode-detail-name">КОМПЛЕМЕНТЫ</strong>
-            <p>Показывается референсный цвет. Найди его противоположность на цветовом круге (Hue + 180°). Насыщенность и яркость сохраняются.</p>
-            <p class="mode-meta">5 раундов • Стандартные очки</p>
+            <strong class="mode-detail-name">{{ t('modeDetails.complement.name', currentLanguage) }}</strong>
+            <p>{{ t('modeDetails.complement.desc', currentLanguage) }}</p>
+            <p class="mode-meta">{{ t('modeDetails.complement.meta', currentLanguage) }}</p>
           </div>
 
           <div class="mode-detail">
-            <strong class="mode-detail-name">МАРАФОН</strong>
-            <p>Режим выживания! Начинаешь с требованием 50% точности. Каждые 3 раунда требование увеличивается на 5% (макс. 95%). Одна ошибка — конец игры!</p>
-            <p class="mode-meta">До первой ошибки • Растущая сложность</p>
+            <strong class="mode-detail-name">{{ t('modeDetails.streak.name', currentLanguage) }}</strong>
+            <p>{{ t('modeDetails.streak.desc', currentLanguage) }}</p>
+            <p class="mode-meta">{{ t('modeDetails.streak.meta', currentLanguage) }}</p>
           </div>
-        </div>
-
-        <div class="rule-section">
-          <h3>🎯 СИСТЕМА ОЧКОВ</h3>
-          <ul>
-            <li>95%+ → 🎯 ИДЕАЛЬНО! (~950-1000 очков)</li>
-            <li>90%+ → ⭐ ОТЛИЧНО! (~900 очков)</li>
-            <li>75%+ → ✨ ХОРОШО! (~750 очков)</li>
-            <li>50%+ → 👍 НЕПЛОХО! (~500 очков)</li>
-            <li>25%+ → 🤔 ЕЩЕ РАЗ! (~250 очков)</li>
-          </ul>
         </div>
       </div>
 
-      <button class="pixel-button" @click="backToMainMenu">НАЗАД</button>
+      <button class="pixel-button" @click="backToMainMenu">{{ t('backToMenu', currentLanguage) }}</button>
     </div>
 
     <!-- Privacy Policy Screen -->
     <div class="privacy-screen pixel-border" v-if="gameState === 'menu' && menuScreen === 'privacy'">
-      <h2 class="screen-title">ПОЛИТИКА ДАННЫХ</h2>
+      <h2 class="screen-title">{{ t('privacyTitle', currentLanguage) }}</h2>
 
       <div class="privacy-content">
-        <div class="privacy-section">
-          <h3>📊 КАКИЕ ДАННЫЕ МЫ СОБИРАЕМ</h3>
-          <p>Эта игра <strong>НЕ собирает и НЕ хранит</strong> никакие персональные данные.</p>
-        </div>
-
-        <div class="privacy-section">
-          <h3>💾 ЛОКАЛЬНОЕ ХРАНЕНИЕ</h3>
-          <p>Все данные игры (результаты, статистика) хранятся <strong>только в твоем браузере</strong> локально. Мы не отправляем эти данные на сервер.</p>
-        </div>
-
-        <div class="privacy-section">
-          <h3>🔒 БЕЗОПАСНОСТЬ</h3>
-          <p>Игра работает полностью на стороне клиента (в браузере). Никакие данные не передаются третьим лицам.</p>
-        </div>
-
-        <div class="privacy-section">
-          <h3>🍪 COOKIES</h3>
-          <p>Мы не используем cookies для отслеживания. Игра использует только localStorage браузера для сохранения игрового прогресса.</p>
-        </div>
-
-        <div class="privacy-section">
-          <h3>📧 КОНТАКТЫ</h3>
-          <p>Если у тебя есть вопросы о политике данных, можешь создать issue на GitHub.</p>
-        </div>
+        <p>{{ t('privacyText', currentLanguage) }}</p>
       </div>
 
-      <button class="pixel-button" @click="backToMainMenu">НАЗАД</button>
+      <button class="pixel-button" @click="backToMainMenu">{{ t('backToMenu', currentLanguage) }}</button>
     </div>
 
     <!-- Mode selector -->
@@ -300,7 +266,7 @@
 
           <!-- Guess color -->
           <div class="guess-section">
-            <h3 class="section-label">ТВОЙ ВЫБОР</h3>
+            <h3 class="section-label">{{ t('yourGuess', currentLanguage) }}</h3>
             <div class="color-preview pixel-border" :style="{ backgroundColor: guessColor }"></div>
             <div class="hex-code">{{ guessColor.toUpperCase() }}</div>
 
@@ -356,9 +322,9 @@
 
             <!-- Lynx mode hints -->
             <div class="lynx-hints pixel-border" v-if="gameMode === 'lynx' && lynxHints.length > 0 && gameState === 'playing'">
-              <div class="hint-title">ПОДСКАЗКИ:</div>
+              <div class="hint-title">{{ t('hintsTitle', currentLanguage) }}</div>
               <div class="hint-item" v-for="(hint, index) in lynxHints" :key="index">
-                {{ index + 1 }}. {{ hint }}
+                {{ index + 1 }}. {{ translateHint(hint) }}
               </div>
             </div>
 
@@ -776,21 +742,23 @@ function submitGuess() {
 
         let hint = ''
         if (hslGuess[2] < hslTarget[2] - 0.1) {
-          hint = 'Слишком темно'
+          hint = 'tooDark'
         } else if (hslGuess[2] > hslTarget[2] + 0.1) {
-          hint = 'Слишком светло'
-        } else if (hslGuess[0] < 60 && hslTarget[0] > 60) {
-          hint = 'Нужно больше холодных тонов'
-        } else if (hslGuess[0] > 60 && hslTarget[0] < 60) {
-          hint = 'Нужно больше теплых тонов'
+          hint = 'tooBright'
         } else if (guessRgb[1] < targetRgb[1] - 20) {
-          hint = 'Нужно больше зеленого'
+          hint = 'moreGreen'
+        } else if (guessRgb[1] > targetRgb[1] + 20) {
+          hint = 'lessGreen'
         } else if (guessRgb[0] < targetRgb[0] - 20) {
-          hint = 'Нужно больше красного'
+          hint = 'moreRed'
+        } else if (guessRgb[0] > targetRgb[0] + 20) {
+          hint = 'lessRed'
         } else if (guessRgb[2] < targetRgb[2] - 20) {
-          hint = 'Нужно больше синего'
+          hint = 'moreBlue'
+        } else if (guessRgb[2] > targetRgb[2] + 20) {
+          hint = 'lessBlue'
         } else {
-          hint = 'Совсем близко!'
+          hint = 'moreBlue' // Close enough hint
         }
 
         lynxHints.value.push(hint)
@@ -967,6 +935,10 @@ function backToMainMenu() {
 function switchLanguage(lang) {
   currentLanguage.value = lang
   setLanguage(lang)
+}
+
+function translateHint(hintKey) {
+  return t(`hints.${hintKey}`, currentLanguage.value)
 }
 
 function backToMenu() {

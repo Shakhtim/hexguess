@@ -74,6 +74,7 @@ export const translations = {
     backToMenu: 'В МЕНЮ',
 
     // Lynx mode hints
+    hintsTitle: 'ПОДСКАЗКИ:',
     hints: {
       tooDark: 'Слишком темно',
       tooBright: 'Слишком светло',
@@ -91,6 +92,7 @@ export const translations = {
     howToPlayText: 'Тебе показывается цвет. Используй RGB-слайдеры или палитру, чтобы воссоздать его. Нажми "ОТПРАВИТЬ" когда готов!',
     accuracyCalc: '📐 КАК СЧИТАЕТСЯ ТОЧНОСТЬ',
     accuracyText: 'Игра использует евклидово расстояние в RGB пространстве:',
+    accuracyFormula: 'Точность = 100 - (дистанция / 441.67 × 100)',
     gameModes: '🎮 РЕЖИМЫ ИГРЫ',
 
     modeDetails: {
@@ -230,6 +232,7 @@ export const translations = {
     backToMenu: 'MENU',
 
     // Lynx mode hints
+    hintsTitle: 'HINTS:',
     hints: {
       tooDark: 'Too dark',
       tooBright: 'Too bright',
@@ -247,6 +250,7 @@ export const translations = {
     howToPlayText: 'You are shown a color. Use RGB sliders or color palette to recreate it. Press "SUBMIT" when ready!',
     accuracyCalc: '📐 ACCURACY CALCULATION',
     accuracyText: 'The game uses Euclidean distance in RGB space:',
+    accuracyFormula: 'Accuracy = 100 - (distance / 441.67 × 100)',
     gameModes: '🎮 GAME MODES',
 
     modeDetails: {
