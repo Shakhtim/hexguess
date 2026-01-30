@@ -9,11 +9,17 @@
     "preview": "vite preview",
     "generate-icons": "node generate-icons.js"
   },
-  "keywords": ["game", "color", "hex", "vue"],
+  "keywords": [
+    "game",
+    "color",
+    "hex",
+    "vue"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.3",
+    "sharp": "^0.34.5",
     "vite": "^7.3.1"
   },
   "dependencies": {
