@@ -1,0 +1,23 @@
+{
+  "name": "hexguess",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A color guessing game where you match hex colors",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "generate-icons": "node generate-icons.js"
+  },
+  "keywords": ["game", "color", "hex", "vue"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.3",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "chroma-js": "^3.2.0",
+    "vue": "^3.5.27"
+  }
+}

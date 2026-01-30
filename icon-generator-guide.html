@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Генерация иконок для HexGuess</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+      color: #fff;
+    }
+    h1 { color: #ff6b9d; }
+    h2 { color: #c060ff; border-bottom: 2px solid #c060ff; padding-bottom: 10px; }
+    .method {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      border-left: 4px solid #4dff88;
+    }
+    .method h3 { color: #4dff88; margin-top: 0; }
+    a { color: #ff6b9d; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code {
+      background: rgba(0,0,0,0.3);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+    }
+    .sizes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .size-box {
+      background: rgba(255, 107, 157, 0.1);
+      padding: 15px;
+      border-radius: 6px;
+      border: 1px solid #ff6b9d;
+    }
+    .size-box strong { color: #ff6b9d; }
+    .preview {
+      width: 64px;
+      height: 64px;
+      margin: 20px auto;
+      display: block;
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎨 Генерация иконок для HexGuess</h1>
+
+  <p>Файл <code>public/favicon.svg</code> уже создан. Теперь нужно создать PNG версии для различных устройств и платформ.</p>
+
+  <h2>📦 Необходимые размеры</h2>
+  <div class="sizes">
+    <div class="size-box">
+      <strong>favicon-16x16.png</strong><br>
+      16×16 px
+    </div>
+    <div class="size-box">
+      <strong>favicon-32x32.png</strong><br>
+      32×32 px
+    </div>
+    <div class="size-box">
+      <strong>favicon-192x192.png</strong><br>
+      192×192 px
+    </div>
+    <div class="size-box">
+      <strong>favicon-512x512.png</strong><br>
+      512×512 px
+    </div>
+    <div class="size-box">
+      <strong>apple-touch-icon.png</strong><br>
+      180×180 px
+    </div>
+    <div class="size-box">
+      <strong>mstile-150x150.png</strong><br>
+      150×150 px
+    </div>
+  </div>
+
+  <h2>🛠️ Способы генерации</h2>
+
+  <div class="method">
+    <h3>Способ 1: RealFaviconGenerator (Рекомендуется)</h3>
+    <p><strong>Самый простой способ!</strong></p>
+    <ol>
+      <li>Откройте <a href="https://realfavicongenerator.net/" target="_blank">realfavicongenerator.net</a></li>
+      <li>Нажмите "Select your Favicon image"</li>
+      <li>Загрузите <code>public/favicon.svg</code></li>
+      <li>Настройте параметры (можно оставить по умолчанию)</li>
+      <li>Нажмите "Generate your Favicons and HTML code"</li>
+      <li>Скачайте ZIP файл с иконками</li>
+      <li>Распакуйте и скопируйте все PNG файлы в папку <code>public/</code></li>
+    </ol>
+  </div>
+
+  <div class="method">
+    <h3>Способ 2: Favicon.io</h3>
+    <ol>
+      <li>Откройте <a href="https://favicon.io/favicon-converter/" target="_blank">favicon.io/favicon-converter</a></li>
+      <li>Загрузите <code>public/favicon.svg</code></li>
+      <li>Нажмите "Download"</li>
+      <li>Распакуйте ZIP и скопируйте иконки в <code>public/</code></li>
+    </ol>
+  </div>
+
+  <div class="method">
+    <h3>Способ 3: С помощью npm (если установлен Node.js)</h3>
+    <p>В терминале выполните:</p>
+    <pre><code>npm install sharp
+npm run generate-icons</code></pre>
+    <p>Скрипт автоматически создаст все необходимые PNG иконки в папке <code>public/</code></p>
+  </div>
+
+  <div class="method">
+    <h3>Способ 4: Онлайн SVG в PNG конвертер</h3>
+    <ol>
+      <li>Откройте <a href="https://cloudconvert.com/svg-to-png" target="_blank">cloudconvert.com/svg-to-png</a></li>
+      <li>Загрузите <code>public/favicon.svg</code></li>
+      <li>Установите нужный размер (см. таблицу выше)</li>
+      <li>Конвертируйте и скачайте</li>
+      <li>Переименуйте файл согласно таблице</li>
+      <li>Повторите для всех размеров</li>
+    </ol>
+  </div>
+
+  <h2>🖼️ Создание OG Images</h2>
+  <p>Для красивых превью в соцсетях нужно создать:</p>
+  <ul>
+    <li><strong>og-image.png</strong> (1200×630 px) - для Facebook, VK</li>
+    <li><strong>twitter-image.png</strong> (1200×600 px) - для Twitter</li>
+  </ul>
+  <p>Создайте скриншот игры или дизайн с помощью:</p>
+  <ul>
+    <li><a href="https://www.canva.com/" target="_blank">Canva</a> (есть готовые шаблоны)</li>
+    <li><a href="https://www.figma.com/" target="_blank">Figma</a></li>
+    <li>Скриншот игры + редактирование в Photoshop/GIMP</li>
+  </ul>
+
+  <h2>📸 Скриншоты для PWA</h2>
+  <ul>
+    <li><strong>screenshot-1.png</strong> (1280×720 px) - десктопная версия</li>
+    <li><strong>screenshot-2.png</strong> (750×1334 px) - мобильная версия</li>
+  </ul>
+  <p>Сделайте скриншоты игры в браузере (F12 → Device Toolbar)</p>
+
+  <h2>✅ Проверка после генерации</h2>
+  <p>После создания всех иконок проверьте, что в папке <code>public/</code> есть:</p>
+  <ul>
+    <li>✓ favicon.svg</li>
+    <li>✓ favicon-16x16.png</li>
+    <li>✓ favicon-32x32.png</li>
+    <li>✓ favicon-192x192.png</li>
+    <li>✓ favicon-512x512.png</li>
+    <li>✓ apple-touch-icon.png</li>
+    <li>✓ mstile-150x150.png</li>
+    <li>✓ og-image.png</li>
+    <li>✓ twitter-image.png</li>
+    <li>✓ screenshot-1.png</li>
+    <li>✓ screenshot-2.png</li>
+  </ul>
+
+  <h2>🚀 Следующие шаги</h2>
+  <p>После создания иконок:</p>
+  <ol>
+    <li>Обновите домен в <code>index.html</code>, <code>sitemap.xml</code>, <code>manifest.json</code></li>
+    <li>Добавьте Яндекс Вебмастер verification код</li>
+    <li>Зарегистрируйте сайт в Google Search Console</li>
+    <li>Отправьте sitemap.xml</li>
+  </ol>
+  <p>📖 Подробнее: <a href="./SEO-SETUP.md">SEO-SETUP.md</a></p>
+
+</body>
+</html>

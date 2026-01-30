@@ -1,0 +1,15 @@
+# robots.txt for HexGuess
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://hexguess.ru/sitemap.xml
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Clean-param: utm_source&utm_medium&utm_campaign
+
+# Google
+User-agent: Googlebot
+Allow: /

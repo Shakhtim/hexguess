@@ -1,0 +1,8 @@
+# Redirects for Netlify deployment
+
+# SPA fallback - redirect all to index.html
+/*    /index.html   200
+
+# Force HTTPS (if using custom domain)
+http://hexguess.ru/*  https://hexguess.ru/:splat  301!
+http://www.hexguess.ru/*  https://hexguess.ru/:splat  301!
