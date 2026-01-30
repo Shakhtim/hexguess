@@ -1,14 +1,32 @@
 <template>
   <div class="game-container">
+    <!-- Language switcher -->
+    <div class="language-switcher">
+      <button
+        class="lang-btn"
+        :class="{ active: currentLanguage === 'ru' }"
+        @click="switchLanguage('ru')"
+      >
+        RU
+      </button>
+      <button
+        class="lang-btn"
+        :class="{ active: currentLanguage === 'en' }"
+        @click="switchLanguage('en')"
+      >
+        EN
+      </button>
+    </div>
+
     <!-- Main Menu -->
     <div class="main-menu pixel-border" v-if="gameState === 'menu' && menuScreen === 'main'">
       <h1 class="game-title glitch-text">HEX<span class="accent">GUESS</span></h1>
-      <p class="menu-subtitle">ИГРА НА ЦВЕТОВОСПРИЯТИЕ</p>
+      <p class="menu-subtitle">{{ t('subtitle', currentLanguage) }}</p>
 
       <div class="menu-buttons">
-        <button class="pixel-button menu-btn" @click="goToModeSelect">НАЧАТЬ ИГРУ</button>
-        <button class="pixel-button menu-btn secondary" @click="showRules">ПРАВИЛА</button>
-        <button class="pixel-button menu-btn secondary" @click="showPrivacy">ПОЛИТИКА ДАННЫХ</button>
+        <button class="pixel-button menu-btn" @click="goToModeSelect">{{ t('startGame', currentLanguage) }}</button>
+        <button class="pixel-button menu-btn secondary" @click="showRules">{{ t('rules', currentLanguage) }}</button>
+        <button class="pixel-button menu-btn secondary" @click="showPrivacy">{{ t('privacy', currentLanguage) }}</button>
       </div>
     </div>
 
@@ -151,62 +169,62 @@
     <!-- Mode selector -->
     <div class="mode-selector pixel-border" v-if="gameState === 'modeSelect'">
       <h1 class="game-title glitch-text clickable" @click="backToMenu">HEX<span class="accent">GUESS</span></h1>
-      <h2 class="mode-title">ВЫБЕРИ РЕЖИМ</h2>
+      <h2 class="mode-title">{{ t('selectMode', currentLanguage) }}</h2>
 
       <div class="modes">
         <button class="mode-button pixel-border easy" @click="selectMode('easy')">
-          <div class="mode-name">ЛЕГКО</div>
-          <div class="mode-desc">Только оттенок</div>
+          <div class="mode-name">{{ t('modes.easy', currentLanguage) }}</div>
+          <div class="mode-desc">{{ t('modeDescriptions.easy', currentLanguage) }}</div>
         </button>
 
         <button class="mode-button pixel-border normal" @click="selectMode('normal')">
-          <div class="mode-name">НОРМАЛЬНО</div>
-          <div class="mode-desc">Угадай цвет</div>
+          <div class="mode-name">{{ t('modes.normal', currentLanguage) }}</div>
+          <div class="mode-desc">{{ t('modeDescriptions.normal', currentLanguage) }}</div>
         </button>
 
         <button class="mode-button pixel-border hard" @click="selectMode('hard')">
-          <div class="mode-name">СЛОЖНО</div>
-          <div class="mode-desc">Точная игра</div>
+          <div class="mode-name">{{ t('modes.hard', currentLanguage) }}</div>
+          <div class="mode-desc">{{ t('modeDescriptions.hard', currentLanguage) }}</div>
         </button>
 
         <button class="mode-button pixel-border daily" @click="selectMode('daily')">
-          <div class="mode-name">ДЕЙЛИ</div>
-          <div class="mode-desc">Цвет дня</div>
+          <div class="mode-name">{{ t('modes.daily', currentLanguage) }}</div>
+          <div class="mode-desc">{{ t('modeDescriptions.daily', currentLanguage) }}</div>
         </button>
 
         <button class="mode-button pixel-border blitz" @click="selectMode('blitz')">
-          <div class="mode-name">БЛИЦ</div>
-          <div class="mode-desc">60 секунд</div>
+          <div class="mode-name">{{ t('modes.blitz', currentLanguage) }}</div>
+          <div class="mode-desc">{{ t('modeDescriptions.blitz', currentLanguage) }}</div>
         </button>
 
         <button class="mode-button pixel-border gradient" @click="selectMode('gradient')">
-          <div class="mode-name">ГРАДИЕНТ</div>
-          <div class="mode-desc">Средний цвет</div>
+          <div class="mode-name">{{ t('modes.gradient', currentLanguage) }}</div>
+          <div class="mode-desc">{{ t('modeDescriptions.gradient', currentLanguage) }}</div>
         </button>
 
         <button class="mode-button pixel-border blind" @click="selectMode('blind')">
-          <div class="mode-name">СЛЕПАЯ ЗОНА</div>
-          <div class="mode-desc">Скрытый канал</div>
+          <div class="mode-name">{{ t('modes.blind', currentLanguage) }}</div>
+          <div class="mode-desc">{{ t('modeDescriptions.blind', currentLanguage) }}</div>
         </button>
 
         <button class="mode-button pixel-border illusion" @click="selectMode('illusion')">
-          <div class="mode-name">ИЛЛЮЗИЯ</div>
-          <div class="mode-desc">Обман зрения</div>
+          <div class="mode-name">{{ t('modes.illusion', currentLanguage) }}</div>
+          <div class="mode-desc">{{ t('modeDescriptions.illusion', currentLanguage) }}</div>
         </button>
 
         <button class="mode-button pixel-border lynx" @click="selectMode('lynx')">
-          <div class="mode-name">ГЛАЗ РЫСИ</div>
-          <div class="mode-desc">3 попытки</div>
+          <div class="mode-name">{{ t('modes.lynx', currentLanguage) }}</div>
+          <div class="mode-desc">{{ t('modeDescriptions.lynx', currentLanguage) }}</div>
         </button>
 
         <button class="mode-button pixel-border complementary" @click="selectMode('complementary')">
-          <div class="mode-name">КОМПЛЕМЕНТЫ</div>
-          <div class="mode-desc">Противоположность</div>
+          <div class="mode-name">{{ t('modes.complement', currentLanguage) }}</div>
+          <div class="mode-desc">{{ t('modeDescriptions.complement', currentLanguage) }}</div>
         </button>
 
         <button class="mode-button pixel-border streak" @click="selectMode('streak')">
-          <div class="mode-name">МАРАФОН</div>
-          <div class="mode-desc">До ошибки</div>
+          <div class="mode-name">{{ t('modes.streak', currentLanguage) }}</div>
+          <div class="mode-desc">{{ t('modeDescriptions.streak', currentLanguage) }}</div>
         </button>
       </div>
     </div>
@@ -223,15 +241,15 @@
         </div>
         <div class="stats">
           <div class="stat-item" v-if="gameMode !== 'blitz'">
-            <span class="stat-label">Раунд</span>
+            <span class="stat-label">{{ t('round', currentLanguage) }}</span>
             <span class="stat-value">{{ currentRound }}/{{ maxRounds }}</span>
           </div>
           <div class="stat-item" v-if="gameMode === 'blitz'">
-            <span class="stat-label">Время</span>
+            <span class="stat-label">{{ t('timeLeft', currentLanguage) }}</span>
             <span class="stat-value" :class="{ 'time-warning': timeLeft <= 10 }">{{ timeLeft }}с</span>
           </div>
           <div class="stat-item">
-            <span class="stat-label">Очки</span>
+            <span class="stat-label">{{ t('score', currentLanguage) }}</span>
             <span class="stat-value">{{ totalScore }}</span>
           </div>
         </div>
@@ -242,9 +260,9 @@
         <div class="game-layout">
           <!-- Target color -->
           <div class="target-section">
-            <h3 class="section-label" v-if="gameMode === 'gradient'">НАЙДИ СРЕДНИЙ ЦВЕТ</h3>
-            <h3 class="section-label" v-else-if="gameMode === 'complementary'">НАЙДИ ПРОТИВОПОЛОЖНОСТЬ</h3>
-            <h3 class="section-label" v-else>ЦЕЛЬ</h3>
+            <h3 class="section-label" v-if="gameMode === 'gradient'">{{ t('findMiddleColor', currentLanguage) }}</h3>
+            <h3 class="section-label" v-else-if="gameMode === 'complementary'">{{ t('findOpposite', currentLanguage) }}</h3>
+            <h3 class="section-label" v-else>{{ t('targetColor', currentLanguage) }}</h3>
 
             <!-- Regular modes -->
             <div v-if="gameMode !== 'gradient' && gameMode !== 'illusion' && gameMode !== 'complementary'" class="color-preview pixel-border" :style="{ backgroundColor: targetColor }"></div>
@@ -270,10 +288,10 @@
 
             <div class="hex-code" v-if="gameState === 'result'">{{ targetColor.toUpperCase() }}</div>
             <div class="blind-hint" v-if="gameMode === 'blind' && gameState === 'playing'">
-              Скрытый канал: <span class="blind-channel">{{ blindChannel.toUpperCase() }}</span>
+              {{ t('hiddenChannel', currentLanguage) }}: <span class="blind-channel">{{ blindChannel.toUpperCase() }}</span>
             </div>
             <div class="lynx-info" v-if="gameMode === 'lynx' && gameState === 'playing'">
-              Попыток: <span class="lynx-attempts">{{ lynxAttemptsLeft }}/3</span>
+              {{ t('attemptsLeft', currentLanguage) }}: <span class="lynx-attempts">{{ lynxAttemptsLeft }}/3</span>
             </div>
             <div class="streak-info" v-if="gameMode === 'streak' && gameState === 'playing'">
               Допуск: <span class="streak-tolerance">≥{{ streakTolerance }}%</span>
@@ -347,11 +365,11 @@
             <!-- Result display -->
             <div class="result-info pixel-border" v-if="gameState === 'result'">
               <div class="result-row">
-                <span class="label">ТОЧНОСТЬ:</span>
+                <span class="label">{{ t('accuracy', currentLanguage) }}:</span>
                 <span class="value accuracy" :class="accuracyClass">{{ lastAccuracy }}%</span>
               </div>
               <div class="result-row">
-                <span class="label">ОЧКИ:</span>
+                <span class="label">{{ t('score', currentLanguage) }}:</span>
                 <span class="value points">+{{ lastScore }}</span>
               </div>
               <div class="result-msg" :class="accuracyClass">{{ resultMessage }}</div>
@@ -364,21 +382,21 @@
               @click="submitGuess"
               :disabled="isSubmitting || (gameMode === 'lynx' && lynxAttemptsLeft <= 0)"
             >
-              ОТПРАВИТЬ
+              {{ t('submit', currentLanguage) }}
             </button>
             <button
               class="pixel-button action-btn"
               v-if="gameState === 'result' && currentRound < maxRounds"
               @click="nextRound"
             >
-              СЛЕДУЮЩИЙ
+              {{ t('next', currentLanguage) }}
             </button>
             <button
               class="pixel-button action-btn"
               v-if="gameState === 'result' && currentRound >= maxRounds"
               @click="finishGame"
             >
-              РЕЗУЛЬТАТЫ
+              {{ t('results', currentLanguage) }}
             </button>
           </div>
         </div>
@@ -386,20 +404,20 @@
 
       <!-- Final score -->
       <div class="final-score pixel-border" v-if="gameState === 'finished'">
-        <h2 class="final-title glitch-text">ИГРА ОКОНЧЕНА!</h2>
+        <h2 class="final-title glitch-text">{{ t('gameOver', currentLanguage) }}</h2>
         <div class="final-stats">
           <div class="final-stat">
-            <span class="final-label">ВСЕГО ОЧКОВ</span>
+            <span class="final-label">{{ t('finalScore', currentLanguage) }}</span>
             <span class="final-value">{{ totalScore }}</span>
           </div>
           <div class="final-stat">
-            <span class="final-label">СРЕДНЯЯ ТОЧНОСТЬ</span>
+            <span class="final-label">{{ t('avgAccuracy', currentLanguage) }}</span>
             <span class="final-value">{{ averageAccuracy }}%</span>
           </div>
         </div>
         <div class="final-buttons">
-          <button class="pixel-button" @click="backToModeSelect">ИГРАТЬ СНОВА</button>
-          <button class="pixel-button secondary" @click="backToMenu">В МЕНЮ</button>
+          <button class="pixel-button" @click="backToModeSelect">{{ t('playAgain', currentLanguage) }}</button>
+          <button class="pixel-button secondary" @click="backToMenu">{{ t('backToMenu', currentLanguage) }}</button>
         </div>
       </div>
     </div>
@@ -411,6 +429,7 @@ import { ref, computed, onUnmounted } from 'vue'
 import chroma from 'chroma-js'
 import ColorPicker from './ColorPicker.vue'
 import { showFullscreenAd, savePlayerData, loadPlayerData, isRunningInYandexGames } from '../yandexGames'
+import { t, getLanguage, setLanguage } from '../i18n'
 
 // Game state
 const menuScreen = ref('main') // 'main', 'rules', 'privacy'
@@ -421,6 +440,7 @@ const maxRounds = ref(5)
 const totalScore = ref(0)
 const pickerMode = ref('rgb') // 'rgb' or 'picker'
 const isSubmitting = ref(false) // Prevent multiple simultaneous submissions
+const currentLanguage = ref(getLanguage()) // Current UI language
 
 // Blitz mode
 const timeLeft = ref(60)
@@ -462,20 +482,8 @@ const guessColor = computed(() => {
 })
 
 const modeName = computed(() => {
-  const names = {
-    easy: 'ЛЕГКО',
-    normal: 'НОРМАЛЬНО',
-    hard: 'СЛОЖНО',
-    daily: 'ДЕЙЛИ',
-    blitz: 'БЛИЦ',
-    gradient: 'ГРАДИЕНТ',
-    blind: 'СЛЕПАЯ ЗОНА',
-    illusion: 'ИЛЛЮЗИЯ',
-    lynx: 'ГЛАЗ РЫСИ',
-    complementary: 'КОМПЛЕМЕНТЫ',
-    streak: 'МАРАФОН'
-  }
-  return names[gameMode.value]
+  const modeKey = gameMode.value === 'complementary' ? 'complement' : gameMode.value
+  return t(`modes.${modeKey}`, currentLanguage.value)
 })
 
 const averageAccuracy = computed(() => {
@@ -956,6 +964,11 @@ function backToMainMenu() {
   menuScreen.value = 'main'
 }
 
+function switchLanguage(lang) {
+  currentLanguage.value = lang
+  setLanguage(lang)
+}
+
 function backToMenu() {
   if (timerInterval.value) {
     clearInterval(timerInterval.value)
@@ -986,6 +999,51 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   padding: 10px;
+}
+
+/* Language Switcher */
+.language-switcher {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 5px;
+  z-index: 1000;
+}
+
+.lang-btn {
+  background: var(--bg-dark);
+  color: var(--text-secondary);
+  border: 1px solid var(--text-secondary);
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.lang-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.lang-btn.active {
+  background: var(--accent-primary);
+  color: var(--bg-dark);
+  border-color: var(--accent-primary);
+}
+
+@media (max-width: 768px) {
+  .language-switcher {
+    top: 10px;
+    right: 10px;
+  }
+
+  .lang-btn {
+    padding: 6px 10px;
+    font-size: 10px;
+  }
 }
 
 /* Main Menu */
