@@ -44,3 +44,4 @@ coverage
 
 # Claude Code
 .claude
+*.tar.gz

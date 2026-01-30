@@ -410,6 +410,7 @@
 import { ref, computed, onUnmounted } from 'vue'
 import chroma from 'chroma-js'
 import ColorPicker from './ColorPicker.vue'
+import { showFullscreenAd, savePlayerData, loadPlayerData, isRunningInYandexGames } from '../yandexGames'
 
 // Game state
 const menuScreen = ref('main') // 'main', 'rules', 'privacy'
@@ -892,12 +893,17 @@ function generateNextColor() {
   }
 }
 
-function nextRound() {
+async function nextRound() {
   currentRound.value++
 
   if (currentRound.value > maxRounds.value) {
     gameState.value = 'finished'
     return
+  }
+
+  // Show ad every 3 rounds in Yandex.Games
+  if (isRunningInYandexGames() && currentRound.value % 3 === 0) {
+    await showFullscreenAd()
   }
 
   generateNextColor()
@@ -906,8 +912,20 @@ function nextRound() {
   isSubmitting.value = false // Reset submission lock
 }
 
-function finishGame() {
+async function finishGame() {
   gameState.value = 'finished'
+
+  // Save player score in Yandex.Games
+  if (isRunningInYandexGames()) {
+    const savedData = await loadPlayerData() || {}
+    const modeKey = `highScore_${gameMode.value}`
+
+    // Update high score if current score is better
+    if (!savedData[modeKey] || totalScore.value > savedData[modeKey]) {
+      savedData[modeKey] = totalScore.value
+      await savePlayerData(savedData)
+    }
+  }
 }
 
 function backToModeSelect() {
