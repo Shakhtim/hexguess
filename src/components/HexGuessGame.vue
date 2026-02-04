@@ -3,7 +3,6 @@
     <!-- Main Menu -->
     <div class="main-menu pixel-border" v-if="gameState === 'menu' && menuScreen === 'main'">
       <h1 class="game-title glitch-text">HEX<span class="accent">GUESS</span></h1>
-      <p class="menu-subtitle">{{ t('subtitle', currentLanguage) }}</p>
 
       <!-- Language switcher in menu -->
       <div class="language-switcher-menu">
@@ -260,7 +259,7 @@
               {{ t('attemptsLeft', currentLanguage) }}: <span class="lynx-attempts">{{ lynxAttemptsLeft }}/3</span>
             </div>
             <div class="streak-info" v-if="gameMode === 'streak' && gameState === 'playing'">
-              Допуск: <span class="streak-tolerance">≥{{ streakTolerance }}%</span>
+              {{ t('tolerance', currentLanguage) }}: <span class="streak-tolerance">≥{{ streakTolerance }}%</span>
             </div>
           </div>
 
@@ -1408,16 +1407,16 @@ onUnmounted(() => {
 }
 
 .section-label {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-secondary);
   text-align: center;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   margin: 0;
 }
 
 .color-preview {
   width: 100%;
-  height: 180px;
+  height: 160px;
   transition: all 0.3s ease;
 }
 
@@ -2374,35 +2373,35 @@ onUnmounted(() => {
   }
 
   .section-label {
-    font-size: 10px;
-    margin: 6px 0;
+    font-size: 9px;
+    margin: 3px 0;
   }
 
   .color-preview {
-    height: 110px;
+    height: 100px;
   }
 
   .gradient-color,
   .complementary-ref,
   .complementary-target {
-    height: 110px;
+    height: 100px;
   }
 
   .illusion-preview {
-    height: 110px;
+    height: 100px;
   }
 
   .game-layout {
-    padding: 12px;
-    gap: 10px;
-  }
-
-  .sliders {
+    padding: 8px;
     gap: 8px;
   }
 
+  .sliders {
+    gap: 6px;
+  }
+
   .slider-group {
-    gap: 4px;
+    gap: 3px;
   }
 
   .slider-label {
@@ -2414,17 +2413,17 @@ onUnmounted(() => {
   }
 
   .picker-tabs {
-    gap: 6px;
-    margin-top: 6px;
+    gap: 5px;
+    margin-top: 4px;
   }
 
   .picker-tab {
-    padding: 7px 10px;
-    font-size: 10px;
+    padding: 6px 8px;
+    font-size: 9px;
   }
 
   .picker-container {
-    margin-top: 6px;
+    margin-top: 4px;
   }
 
   .blind-hint,
@@ -2456,14 +2455,14 @@ onUnmounted(() => {
   }
 
   .action-btn {
-    margin-top: 8px;
-    padding: 9px;
+    margin-top: 5px;
+    padding: 8px;
     font-size: 10px;
   }
 
   .result-info {
-    padding: 10px;
-    margin-top: 6px;
+    padding: 8px;
+    margin-top: 4px;
   }
 }
 

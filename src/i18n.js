@@ -3,7 +3,6 @@ export const translations = {
   ru: {
     // Main menu
     title: 'HEXGUESS',
-    subtitle: 'ИГРА НА ЦВЕТОВОСПРИЯТИЕ',
     startGame: 'НАЧАТЬ ИГРУ',
     rules: 'ПРАВИЛА',
     privacy: 'ПОЛИТИКА ДАННЫХ',
@@ -55,6 +54,7 @@ export const translations = {
     findMiddleColor: 'НАЙДИ СРЕДНИЙ ЦВЕТ',
     findOpposite: 'НАЙДИ ПРОТИВОПОЛОЖНОСТЬ',
     hiddenChannel: 'Скрытый канал',
+    tolerance: 'Допуск',
 
     // Color picker
     redChannel: 'Красный',
@@ -157,13 +157,12 @@ export const translations = {
 
     // Privacy screen
     privacyTitle: 'ПОЛИТИКА ДАННЫХ',
-    privacyText: 'HexGuess не собирает персональные данные. Мы используем localStorage браузера для сохранения настроек и рекордов только на вашем устройстве. Никакая информация не передается на серверы.'
+    privacyText: 'HexGuess не собирает персональные данные. Мы используем локальное хранилище браузера для сохранения настроек и рекордов только на вашем устройстве. Никакая информация не передается на серверы.'
   },
 
   en: {
     // Main menu
     title: 'HEXGUESS',
-    subtitle: 'COLOR PERCEPTION GAME',
     startGame: 'START GAME',
     rules: 'RULES',
     privacy: 'PRIVACY POLICY',
@@ -215,6 +214,7 @@ export const translations = {
     findMiddleColor: 'FIND MIDDLE COLOR',
     findOpposite: 'FIND OPPOSITE',
     hiddenChannel: 'Hidden channel',
+    tolerance: 'Tolerance',
 
     // Color picker
     redChannel: 'Red',

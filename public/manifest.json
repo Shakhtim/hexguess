@@ -1,7 +1,7 @@
 {
-  "name": "HexGuess - Игра на Цветовосприятие",
+  "name": "HexGuess",
   "short_name": "HexGuess",
-  "description": "Браузерная игра для тренировки цветовосприятия. 11 режимов игры: от легкого до марафона.",
+  "description": "Браузерная игра на угадывание цветов. 11 режимов игры: от легкого до марафона.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0e27",
