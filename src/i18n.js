@@ -1,8 +1,8 @@
-// Localization for HexGuess
+// Localization for ColorGuess
 export const translations = {
   ru: {
     // Main menu
-    title: 'HEXGUESS',
+    title: 'COLORGUESS',
     startGame: 'НАЧАТЬ ИГРУ',
     rules: 'ПРАВИЛА',
     privacy: 'ПОЛИТИКА ДАННЫХ',
@@ -157,12 +157,12 @@ export const translations = {
 
     // Privacy screen
     privacyTitle: 'ПОЛИТИКА ДАННЫХ',
-    privacyText: 'HexGuess не собирает персональные данные. Мы используем локальное хранилище браузера для сохранения настроек и рекордов только на вашем устройстве. Никакая информация не передается на серверы.'
+    privacyText: 'ColorGuess не собирает персональные данные. Мы используем локальное хранилище браузера для сохранения настроек и рекордов только на вашем устройстве. Никакая информация не передается на серверы.'
   },
 
   en: {
     // Main menu
-    title: 'HEXGUESS',
+    title: 'COLORGUESS',
     startGame: 'START GAME',
     rules: 'RULES',
     privacy: 'PRIVACY POLICY',
@@ -317,7 +317,7 @@ export const translations = {
 
     // Privacy screen
     privacyTitle: 'PRIVACY POLICY',
-    privacyText: 'HexGuess does not collect personal data. We use browser localStorage to save settings and records only on your device. No information is transmitted to servers.'
+    privacyText: 'ColorGuess does not collect personal data. We use browser localStorage to save settings and records only on your device. No information is transmitted to servers.'
   }
 }
 

@@ -1,6 +1,6 @@
 {
-  "name": "HexGuess",
-  "short_name": "HexGuess",
+  "name": "ColorGuess",
+  "short_name": "ColorGuess",
   "description": "Браузерная игра на угадывание цветов. 11 режимов игры: от легкого до марафона.",
   "start_url": "/",
   "display": "standalone",

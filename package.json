@@ -1,8 +1,8 @@
 {
-  "name": "hexguess",
+  "name": "colorguess",
   "version": "1.0.0",
   "type": "module",
-  "description": "A color guessing game where you match hex colors",
+  "description": "A color guessing game where you match colors",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
