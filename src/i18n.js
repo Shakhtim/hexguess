@@ -319,8 +319,16 @@ export const translations = {
 
 // Get saved language or default to Russian
 export function getLanguage() {
+  // First check if there's a saved preference
   const saved = localStorage.getItem('hexguess_language')
-  return saved || 'ru'
+  if (saved) return saved
+
+  // If not saved, try to get from Yandex SDK (will be set in main.js)
+  const yandexLang = localStorage.getItem('hexguess_yandex_lang')
+  if (yandexLang) return yandexLang
+
+  // Default to Russian
+  return 'ru'
 }
 
 // Save language preference

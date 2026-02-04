@@ -20,6 +20,19 @@ export async function initYandexSDK() {
   }
 }
 
+// Get language from Yandex SDK
+export function getYandexLanguage() {
+  if (ysdk && ysdk.environment) {
+    const lang = ysdk.environment.i18n.lang
+    // Map Yandex language codes to our supported languages
+    if (lang === 'ru') return 'ru'
+    if (lang === 'en') return 'en'
+    if (lang === 'tr') return 'en' // Turkish -> English fallback
+    return 'en' // Default to English for other languages
+  }
+  return null
+}
+
 // Notify that game is ready to play
 export function gameReady() {
   if (ysdk?.features?.LoadingAPI) {

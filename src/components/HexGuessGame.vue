@@ -391,7 +391,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import chroma from 'chroma-js'
 import ColorPicker from './ColorPicker.vue'
 import { showFullscreenAd, savePlayerData, loadPlayerData, isRunningInYandexGames } from '../yandexGames'
@@ -407,6 +407,13 @@ const totalScore = ref(0)
 const pickerMode = ref('rgb') // 'rgb' or 'picker'
 const isSubmitting = ref(false) // Prevent multiple simultaneous submissions
 const currentLanguage = ref(getLanguage()) // Current UI language
+
+// Listen for Yandex language auto-detection
+onMounted(() => {
+  window.addEventListener('yandex-language-detected', () => {
+    currentLanguage.value = getLanguage()
+  })
+})
 
 // Blitz mode
 const timeLeft = ref(60)

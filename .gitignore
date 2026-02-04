@@ -45,3 +45,5 @@ coverage
 # Claude Code
 .claude
 *.tar.gz
+*.zip
+hexguess-game.zip
