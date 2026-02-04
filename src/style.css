@@ -20,18 +20,16 @@
 body {
   margin: 0;
   font-family: var(--pixel-font);
-  background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1f3a 100%);
+  background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1f3a 100%) fixed;
   color: var(--text-primary);
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  position: fixed;
-  width: 100%;
-  height: 100%;
   /* Disable pull-to-refresh */
   overscroll-behavior: none;
+  touch-action: pan-y;
   /* Disable text selection */
   -webkit-user-select: none;
   -moz-user-select: none;
