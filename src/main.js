@@ -3,6 +3,9 @@ import App from './App.vue'
 import './style.css'
 import { initYandexSDK, gameReady, getYandexLanguage } from './yandexGames'
 
+// Prevent context menu everywhere (Yandex.Games requirement 1.6.2.7)
+document.addEventListener('contextmenu', (e) => e.preventDefault())
+
 // Create and mount app
 const app = createApp(App)
 app.mount('#app')
