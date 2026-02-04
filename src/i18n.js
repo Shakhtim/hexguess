@@ -63,6 +63,8 @@ export const translations = {
     hueChannel: 'Оттенок',
     satChannel: 'Насыщенность',
     lightChannel: 'Яркость',
+    rgbTab: 'RGB',
+    paletteTab: 'ПАЛИТРА',
 
     // Results screen
     gameOver: 'ИГРА ОКОНЧЕНА',
@@ -221,6 +223,8 @@ export const translations = {
     hueChannel: 'Hue',
     satChannel: 'Saturation',
     lightChannel: 'Lightness',
+    rgbTab: 'RGB',
+    paletteTab: 'PALETTE',
 
     // Results screen
     gameOver: 'GAME OVER',

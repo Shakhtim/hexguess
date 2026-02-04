@@ -1,27 +1,27 @@
 <template>
   <div class="game-container">
-    <!-- Language switcher -->
-    <div class="language-switcher">
-      <button
-        class="lang-btn"
-        :class="{ active: currentLanguage === 'ru' }"
-        @click="switchLanguage('ru')"
-      >
-        RU
-      </button>
-      <button
-        class="lang-btn"
-        :class="{ active: currentLanguage === 'en' }"
-        @click="switchLanguage('en')"
-      >
-        EN
-      </button>
-    </div>
-
     <!-- Main Menu -->
     <div class="main-menu pixel-border" v-if="gameState === 'menu' && menuScreen === 'main'">
       <h1 class="game-title glitch-text">HEX<span class="accent">GUESS</span></h1>
       <p class="menu-subtitle">{{ t('subtitle', currentLanguage) }}</p>
+
+      <!-- Language switcher in menu -->
+      <div class="language-switcher-menu">
+        <button
+          class="lang-btn-menu"
+          :class="{ active: currentLanguage === 'ru' }"
+          @click="switchLanguage('ru')"
+        >
+          RU
+        </button>
+        <button
+          class="lang-btn-menu"
+          :class="{ active: currentLanguage === 'en' }"
+          @click="switchLanguage('en')"
+        >
+          EN
+        </button>
+      </div>
 
       <div class="menu-buttons">
         <button class="pixel-button menu-btn" @click="goToModeSelect">{{ t('startGame', currentLanguage) }}</button>
@@ -277,14 +277,14 @@
                 :class="{ active: pickerMode === 'rgb' }"
                 @click="pickerMode = 'rgb'"
               >
-                RGB
+                {{ t('rgbTab', currentLanguage) }}
               </button>
               <button
                 class="tab-btn"
                 :class="{ active: pickerMode === 'picker' }"
                 @click="pickerMode = 'picker'"
               >
-                ПАЛИТРА
+                {{ t('paletteTab', currentLanguage) }}
               </button>
             </div>
 
@@ -981,47 +981,47 @@ onUnmounted(() => {
 }
 
 /* Language Switcher */
-.language-switcher {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+.language-switcher-menu {
   display: flex;
-  gap: 5px;
-  z-index: 1000;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
-.lang-btn {
+.lang-btn-menu {
   background: var(--bg-dark);
   color: var(--text-secondary);
-  border: 1px solid var(--text-secondary);
-  padding: 8px 12px;
-  font-size: 11px;
+  border: 2px solid var(--text-secondary);
+  padding: 10px 20px;
+  font-size: 12px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s;
   font-family: inherit;
+  min-width: 60px;
 }
 
-.lang-btn:hover {
+.lang-btn-menu:hover {
   border-color: var(--accent-primary);
   color: var(--accent-primary);
+  transform: translateY(-2px);
 }
 
-.lang-btn.active {
+.lang-btn-menu.active {
   background: var(--accent-primary);
   color: var(--bg-dark);
   border-color: var(--accent-primary);
 }
 
 @media (max-width: 768px) {
-  .language-switcher {
-    top: 10px;
-    right: 10px;
+  .language-switcher-menu {
+    margin-bottom: 20px;
   }
 
-  .lang-btn {
-    padding: 6px 10px;
-    font-size: 10px;
+  .lang-btn-menu {
+    padding: 8px 16px;
+    font-size: 11px;
+    min-width: 50px;
   }
 }
 
@@ -1216,7 +1216,7 @@ onUnmounted(() => {
 /* Mode Selector */
 .mode-selector {
   background: var(--bg-card);
-  padding: 40px;
+  padding: 30px 20px;
   text-align: center;
   width: 100%;
   max-width: 600px;
@@ -1224,7 +1224,7 @@ onUnmounted(() => {
 
 .game-title {
   font-size: 40px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   letter-spacing: 3px;
   text-shadow:
     3px 3px 0 var(--accent-secondary),
@@ -1252,19 +1252,19 @@ onUnmounted(() => {
 .mode-title {
   font-size: 16px;
   color: var(--text-secondary);
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   letter-spacing: 2px;
 }
 
 .modes {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  gap: 12px;
 }
 
 .mode-button {
   background: var(--bg-dark);
-  padding: 20px;
+  padding: 16px 12px;
   cursor: pointer;
   border: 3px solid var(--border-pixel);
   transition: all 0.2s;
@@ -1290,13 +1290,13 @@ onUnmounted(() => {
 .mode-button.streak { border-color: #8ce99a; }
 
 .mode-name {
-  font-size: 18px;
-  margin-bottom: 8px;
+  font-size: 16px;
+  margin-bottom: 6px;
   color: var(--text-primary);
 }
 
 .mode-desc {
-  font-size: 10px;
+  font-size: 9px;
   color: var(--text-secondary);
 }
 
@@ -1450,15 +1450,15 @@ onUnmounted(() => {
 /* Blind mode */
 .blind-hint {
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-secondary);
-  margin-top: 5px;
+  margin-top: 3px;
 }
 
 .blind-channel {
   color: var(--accent-primary);
   font-weight: bold;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 /* Illusion mode */
@@ -1504,34 +1504,34 @@ onUnmounted(() => {
 /* Lynx mode */
 .lynx-info {
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-secondary);
-  margin-top: 5px;
+  margin-top: 3px;
 }
 
 .lynx-attempts {
   color: #74c0fc;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .lynx-hints {
   background: var(--bg-dark);
-  padding: 12px;
-  margin-top: 10px;
+  padding: 8px;
+  margin-top: 6px;
 }
 
 .hint-title {
-  font-size: 10px;
+  font-size: 9px;
   color: var(--text-secondary);
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   text-align: center;
 }
 
 .hint-item {
-  font-size: 10px;
+  font-size: 9px;
   color: #74c0fc;
-  padding: 4px 0;
+  padding: 3px 0;
   border-bottom: 1px solid var(--border-pixel);
 }
 
@@ -1542,15 +1542,15 @@ onUnmounted(() => {
 /* Streak mode */
 .streak-info {
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-secondary);
-  margin-top: 5px;
+  margin-top: 3px;
 }
 
 .streak-tolerance {
   color: #8ce99a;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 /* Picker tabs */
@@ -1789,16 +1789,16 @@ onUnmounted(() => {
   }
 
   .modes {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
 
   .mode-button {
-    padding: 16px;
+    padding: 12px 8px;
   }
 
   .mode-name {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .stat-value {
@@ -1815,6 +1815,10 @@ onUnmounted(() => {
 }
 
 @media (max-width: 600px) {
+  .game-header {
+    margin-bottom: 10px;
+  }
+
   .game-header .game-title {
     font-size: 22px;
   }
@@ -1826,6 +1830,11 @@ onUnmounted(() => {
   .mode-badge {
     padding: 6px 12px;
     font-size: 9px;
+  }
+
+  .game-layout {
+    padding: 12px;
+    gap: 12px;
   }
 
   .stats {
@@ -1929,34 +1938,91 @@ onUnmounted(() => {
     min-height: auto;
   }
 
+  .game-header {
+    margin-bottom: 8px;
+  }
+
   .game-header .game-title {
     font-size: 20px;
   }
 
+  .game-layout {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .stats {
+    gap: 10px;
+  }
+
+  .stat-item {
+    min-width: 70px;
+  }
+
+  .stat-label {
+    font-size: 8px;
+  }
+
+  .stat-value {
+    font-size: 13px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    margin: 6px 0;
+  }
+
+  .sliders {
+    gap: 7px;
+  }
+
+  .slider-group {
+    gap: 4px;
+  }
+
+  .slider-label {
+    font-size: 9px;
+  }
+
+  .slider-value {
+    font-size: 10px;
+  }
+
+  .picker-tabs {
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .picker-tab {
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+
   .mode-selector {
-    padding: 20px 15px;
+    padding: 15px 10px;
   }
 
   .mode-selector .game-title {
-    font-size: 24px;
+    font-size: 22px;
+    margin-bottom: 5px;
   }
 
   .mode-title {
-    font-size: 14px;
-    margin-bottom: 20px;
+    font-size: 12px;
+    margin-bottom: 12px;
   }
 
   .mode-button {
-    padding: 14px;
+    padding: 10px 6px;
   }
 
   .mode-name {
-    font-size: 14px;
-    margin-bottom: 6px;
+    font-size: 13px;
+    margin-bottom: 4px;
   }
 
   .mode-desc {
-    font-size: 9px;
+    font-size: 8px;
   }
 
   .main-menu {
@@ -2023,11 +2089,6 @@ onUnmounted(() => {
     padding: 8px;
   }
 
-  .game-layout {
-    padding: 10px;
-    gap: 12px;
-  }
-
   .color-preview {
     height: 90px;
   }
@@ -2059,25 +2120,29 @@ onUnmounted(() => {
   .blind-hint,
   .lynx-info,
   .streak-info {
-    font-size: 10px;
+    font-size: 9px;
+    margin-top: 2px;
   }
 
   .blind-channel,
   .lynx-attempts,
   .streak-tolerance {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .lynx-hints {
-    padding: 10px;
+    padding: 6px;
+    margin-top: 4px;
   }
 
   .hint-title {
-    font-size: 9px;
+    font-size: 8px;
+    margin-bottom: 4px;
   }
 
   .hint-item {
-    font-size: 9px;
+    font-size: 8px;
+    padding: 2px 0;
   }
 
   .picker-container {
@@ -2121,11 +2186,21 @@ onUnmounted(() => {
 @media (max-width: 360px) {
   .main-menu .game-title,
   .mode-selector .game-title {
-    font-size: 20px;
+    font-size: 18px;
+    margin-bottom: 3px;
+  }
+
+  .game-header {
+    margin-bottom: 6px;
   }
 
   .game-header .game-title {
-    font-size: 18px;
+    font-size: 16px;
+  }
+
+  .game-layout {
+    padding: 8px;
+    gap: 8px;
   }
 
   .menu-subtitle {
@@ -2133,20 +2208,30 @@ onUnmounted(() => {
     letter-spacing: 0.5px;
   }
 
+  .mode-selector {
+    padding: 10px 8px;
+  }
+
   .mode-title {
-    font-size: 12px;
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+
+  .modes {
+    gap: 8px;
   }
 
   .mode-button {
-    padding: 12px;
+    padding: 8px 5px;
   }
 
   .mode-name {
-    font-size: 12px;
+    font-size: 11px;
+    margin-bottom: 3px;
   }
 
   .mode-desc {
-    font-size: 8px;
+    font-size: 7px;
   }
 
   .stats {
@@ -2159,12 +2244,54 @@ onUnmounted(() => {
   }
 
   .section-label {
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 1px;
+    margin: 5px 0;
   }
 
   .hex-code {
-    font-size: 11px;
+    font-size: 10px;
+  }
+
+  .sliders {
+    gap: 6px;
+  }
+
+  .slider-group {
+    gap: 3px;
+  }
+
+  .slider-label {
+    font-size: 8px;
+  }
+
+  .slider-value {
+    font-size: 9px;
+  }
+
+  .picker-tabs {
+    gap: 5px;
+    margin-top: 6px;
+  }
+
+  .picker-tab {
+    padding: 7px 8px;
+    font-size: 9px;
+  }
+
+  .picker-container {
+    margin-top: 6px;
+  }
+
+  .action-btn {
+    margin-top: 8px;
+    padding: 9px;
+    font-size: 10px;
+  }
+
+  .result-info {
+    padding: 10px;
+    margin-top: 6px;
   }
 
   .gradient-preview,
@@ -2216,13 +2343,137 @@ onUnmounted(() => {
   }
 }
 
+@media (max-height: 750px) {
+  .game-container {
+    padding: 8px;
+  }
+
+  .game-header {
+    margin-bottom: 8px;
+  }
+
+  .game-header .game-title {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
+  .stats {
+    gap: 10px;
+  }
+
+  .stat-item {
+    min-width: 70px;
+  }
+
+  .stat-label {
+    font-size: 9px;
+  }
+
+  .stat-value {
+    font-size: 14px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    margin: 6px 0;
+  }
+
+  .color-preview {
+    height: 110px;
+  }
+
+  .gradient-color,
+  .complementary-ref,
+  .complementary-target {
+    height: 110px;
+  }
+
+  .illusion-preview {
+    height: 110px;
+  }
+
+  .game-layout {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .sliders {
+    gap: 8px;
+  }
+
+  .slider-group {
+    gap: 4px;
+  }
+
+  .slider-label {
+    font-size: 9px;
+  }
+
+  .slider-value {
+    font-size: 10px;
+  }
+
+  .picker-tabs {
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .picker-tab {
+    padding: 7px 10px;
+    font-size: 10px;
+  }
+
+  .picker-container {
+    margin-top: 6px;
+  }
+
+  .blind-hint,
+  .lynx-info,
+  .streak-info {
+    font-size: 9px;
+    margin-top: 2px;
+  }
+
+  .blind-channel,
+  .lynx-attempts,
+  .streak-tolerance {
+    font-size: 11px;
+  }
+
+  .lynx-hints {
+    padding: 6px;
+    margin-top: 4px;
+  }
+
+  .hint-title {
+    font-size: 8px;
+    margin-bottom: 4px;
+  }
+
+  .hint-item {
+    font-size: 8px;
+    padding: 2px 0;
+  }
+
+  .action-btn {
+    margin-top: 8px;
+    padding: 9px;
+    font-size: 10px;
+  }
+
+  .result-info {
+    padding: 10px;
+    margin-top: 6px;
+  }
+}
+
 @media (max-height: 700px) {
   .game-container {
     padding: 5px;
   }
 
   .game-header {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .color-preview {
@@ -2240,12 +2491,12 @@ onUnmounted(() => {
   }
 
   .game-layout {
-    padding: 12px;
-    gap: 10px;
+    padding: 10px;
+    gap: 8px;
   }
 
   .sliders {
-    gap: 8px;
+    gap: 6px;
   }
 
   .main-menu {

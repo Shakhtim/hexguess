@@ -25,7 +25,7 @@
 
     <!-- Hue slider -->
     <div class="hue-slider-container">
-      <label class="slider-label">ОТТЕНОК</label>
+      <label class="slider-label">{{ t('hueChannel', currentLanguage).toUpperCase() }}</label>
       <input
         type="range"
         min="0"
@@ -41,6 +41,16 @@
 <script setup>
 import { ref, onMounted, watch, computed } from 'vue'
 import chroma from 'chroma-js'
+import { t, getLanguage } from '../i18n'
+
+const currentLanguage = ref(getLanguage())
+
+// Listen for language changes
+if (typeof window !== 'undefined') {
+  window.addEventListener('yandex-language-detected', () => {
+    currentLanguage.value = getLanguage()
+  })
+}
 
 const props = defineProps({
   modelValue: {
@@ -231,7 +241,7 @@ onMounted(() => {
 
 .color-canvas {
   width: 100%;
-  height: 180px;
+  height: 150px;
   cursor: crosshair;
   touch-action: none;
   display: block;
@@ -256,7 +266,7 @@ onMounted(() => {
 }
 
 .hue-slider-container {
-  margin-top: 12px;
+  margin-top: 8px;
 }
 
 .slider-label {
@@ -310,7 +320,7 @@ onMounted(() => {
 /* Mobile adaptations */
 @media (max-width: 600px) {
   .color-canvas {
-    height: 150px;
+    height: 120px;
   }
 
   .color-indicator {
@@ -345,7 +355,7 @@ onMounted(() => {
 
 @media (max-width: 480px) {
   .color-canvas {
-    height: 130px;
+    height: 110px;
   }
 
   .color-indicator {
@@ -379,7 +389,7 @@ onMounted(() => {
 
 @media (max-width: 360px) {
   .color-canvas {
-    height: 110px;
+    height: 90px;
   }
 
   .color-indicator {
@@ -393,15 +403,34 @@ onMounted(() => {
   }
 }
 
+@media (max-height: 750px) {
+  .color-canvas {
+    height: 100px;
+  }
+
+  .hue-slider-container {
+    margin-top: 6px;
+  }
+
+  .slider-label {
+    font-size: 8px;
+    margin-bottom: 5px;
+  }
+}
+
 @media (max-height: 700px) {
   .color-canvas {
-    height: 120px;
+    height: 90px;
+  }
+
+  .hue-slider-container {
+    margin-top: 6px;
   }
 }
 
 @media (max-height: 600px) {
   .color-canvas {
-    height: 100px;
+    height: 80px;
   }
 
   .color-indicator {
@@ -411,11 +440,12 @@ onMounted(() => {
   }
 
   .hue-slider-container {
-    margin-top: 8px;
+    margin-top: 5px;
   }
 
   .slider-label {
-    margin-bottom: 4px;
+    margin-bottom: 3px;
+    font-size: 7px;
   }
 }
 </style>
