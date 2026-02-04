@@ -2,7 +2,7 @@
   <div class="game-container">
     <!-- Main Menu -->
     <div class="main-menu pixel-border" v-if="gameState === 'menu' && menuScreen === 'main'">
-      <h1 class="game-title glitch-text">HEX<span class="accent">GUESS</span></h1>
+      <h1 class="game-title glitch-text">COLOR<span class="accent">GUESS</span></h1>
 
       <!-- Language switcher in menu -->
       <div class="language-switcher-menu">
@@ -133,7 +133,7 @@
 
     <!-- Mode selector -->
     <div class="mode-selector pixel-border" v-if="gameState === 'modeSelect'">
-      <h1 class="game-title glitch-text clickable" @click="backToMenu">HEX<span class="accent">GUESS</span></h1>
+      <h1 class="game-title glitch-text clickable" @click="backToMenu">COLOR<span class="accent">GUESS</span></h1>
       <h2 class="mode-title">{{ t('selectMode', currentLanguage) }}</h2>
 
       <div class="modes">
@@ -199,7 +199,7 @@
       <!-- Header -->
       <header class="game-header">
         <div class="title-row">
-          <h1 class="game-title clickable" @click="backToMenu">HEX<span class="accent">GUESS</span></h1>
+          <h1 class="game-title clickable" @click="backToMenu">COLOR<span class="accent">GUESS</span></h1>
           <button class="mode-badge pixel-border" @click="backToModeSelect" :class="gameMode">
             {{ modeName }}
           </button>
