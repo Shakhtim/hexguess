@@ -10,12 +10,32 @@ export async function initYandexSDK() {
   }
 
   try {
+    // Suppress SDK errors in development
+    const originalError = console.error
+    console.error = (...args) => {
+      const msg = args[0]?.toString() || ''
+      if (msg.includes('No parent to post message') ||
+          msg.includes('appId from environment') ||
+          msg.includes('YandexGamesSDKEnvironment')) {
+        return // Suppress these expected errors
+      }
+      originalError(...args)
+    }
+
     ysdk = await YaGames.init()
     isYandexGames = true
-    console.log('Yandex.Games SDK initialized')
+    console.log('Yandex.Games SDK initialized successfully')
+
+    // Restore console.error
+    console.error = originalError
+
     return ysdk
   } catch (error) {
-    console.error('Failed to initialize Yandex.Games SDK:', error)
+    // Only log if it's not an environment error
+    if (!error.message?.includes('environment') &&
+        !error.message?.includes('parent')) {
+      console.warn('Running outside Yandex.Games environment')
+    }
     return null
   }
 }
