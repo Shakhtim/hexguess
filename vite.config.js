@@ -3,13 +3,8 @@ import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   plugins: [vue()],
-  base: '', // Empty base for Yandex.Games
+  base: './', // Relative paths for Yandex.Games
   build: {
     assetsDir: 'assets',
-    rollupOptions: {
-      output: {
-        manualChunks: undefined
-      }
-    }
   }
 })
